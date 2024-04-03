@@ -14,23 +14,21 @@ function InputBox({
   const amountInputId = useId();
 
   return (
-    <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
-      <div className="w-1/2">
+    <div className={`bg-white p-3 rounded-lg text-sm flex ${className} p-5`}>
+      <div className="w-1/2 flex flex-col justify-center ">
         <label
           htmlFor={amountInputId}
-          className="text-black/40 mb-2 inline-block"
+          className="text-white/80 mb-2 inline-block font-bold py-1 bg-slate-500 px-1 rounded-md"
         >
-          {label}
+          {label.toUpperCase()}
         </label>
         <input
           id={amountInputId}
-          className="outline-none w-full bg-transparent py-1.5"
+          className="w-full border rounded-md px-1 py-1.5"
           type="number"
           placeholder="Amount"
           value={amount}
-          onChange={(e) =>
-            onAmountChange && onAmountChange((e.target.value))
-          }
+          onChange={(e) => onAmountChange && onAmountChange(e.target.value)}
         />
       </div>
       <div className="w-1/2 flex flex-wrap justify-end text-right">
@@ -39,12 +37,12 @@ function InputBox({
           className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
           value={selectCurrency}
           onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
-          disabled={currencyDisable} // Add this line if currencyDisable is supposed to disable the select
+          disabled={currencyDisable}
         >
           {/* Ensure currencyOptions is an array */}
           {currencyOptions.map((currency) => (
             <option key={currency} value={currency}>
-              {currency}
+              {currency.toUpperCase()}
             </option>
           ))}
         </select>
